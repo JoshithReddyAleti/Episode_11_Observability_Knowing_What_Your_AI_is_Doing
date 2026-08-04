@@ -1,0 +1,11 @@
+{
+  "dashboard": {
+    "title": "LLM Operations",
+    "panels": [
+      {"title": "Tokens/sec", "type": "graph", "targets": [{"expr": "rate(llm_tokens_total[5m])"}]},
+      {"title": "Cost/hour", "type": "graph", "targets": [{"expr": "rate(llm_cost_dollars_total[1h])"}]},
+      {"title": "TTFT p99", "type": "graph", "targets": [{"expr": "histogram_quantile(0.99, llm_ttft_seconds)"}]},
+      {"title": "Cache Hit Rate", "type": "stat", "targets": [{"expr": "rate(cache_hits_total[5m]) / rate(cache_requests_total[5m])"}]}
+    ]
+  }
+}
