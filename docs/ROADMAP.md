@@ -12,7 +12,7 @@
 | 8 | Evaluation & Governance | ✅ |
 | 9 | Agents | ✅ |
 | 10 | Deployment | ✅ |
-| **11** | **Observability (Finale)** | **✅ ← You are here** |
+| **11** | **Observability ** | **✅ ← You are here** |
 
 Eleven episodes. One complete AI engineer — from understanding a single LLM to observing a fleet of them in production.
 
