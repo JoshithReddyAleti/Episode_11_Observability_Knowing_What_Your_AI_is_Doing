@@ -1,0 +1,24 @@
+# Full observability stack: app + collector + prometheus + grafana + loki + tempo
+services:
+  prometheus:
+    image: prom/prometheus
+    ports: ["9090:9090"]
+    volumes:
+      - ./infrastructure/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./infrastructure/prometheus/alert_rules.yml:/etc/prometheus/alert_rules.yml
+
+  grafana:
+    image: grafana/grafana
+    ports: ["3000:3000"]
+    environment: [GF_SECURITY_ADMIN_PASSWORD=admin]
+    volumes: ["./infrastructure/grafana:/etc/grafana/provisioning"]
+
+  loki:
+    image: grafana/loki
+    ports: ["3100:3100"]
+    volumes: ["./infrastructure/loki/loki-config.yaml:/etc/loki/local-config.yaml"]
+
+  tempo:
+    image: grafana/tempo
+    command: ["-config.file=/etc/tempo.yaml"]
+    ports: ["3200:3200"]

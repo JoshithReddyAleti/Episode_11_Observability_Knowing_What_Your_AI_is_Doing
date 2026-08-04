@@ -1,0 +1,23 @@
+groups:
+  - name: ai_observability
+    rules:
+      - alert: HighErrorRate
+        expr: rate(requests_total{status=~"5.."}[5m]) / rate(requests_total[5m]) > 0.05
+        for: 5m
+        labels: { severity: page }
+      - alert: HighLatencyP99
+        expr: histogram_quantile(0.99, rate(request_duration_seconds_bucket[5m])) > 5
+        for: 5m
+        labels: { severity: page }
+      - alert: CostSpike
+        expr: rate(llm_cost_dollars_total[1h]) > 3 * rate(llm_cost_dollars_total[1h] offset 1d)
+        for: 10m
+        labels: { severity: warning }
+      - alert: QualityDrop
+        expr: avg_over_time(quality_score[1h]) < 0.7
+        for: 15m
+        labels: { severity: warning }
+      - alert: RefusalSpike
+        expr: rate(llm_refusals_total[15m]) / rate(requests_total[15m]) > 0.15
+        for: 15m
+        labels: { severity: warning }

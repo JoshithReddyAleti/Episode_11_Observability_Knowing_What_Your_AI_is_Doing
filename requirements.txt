@@ -1,0 +1,24 @@
+# Core
+fastapi>=0.110.0
+uvicorn>=0.27.0
+python-dotenv>=1.0.0
+pydantic>=2.6.0
+
+# Metrics
+prometheus-client>=0.20.0
+
+# Tracing (OpenTelemetry)
+opentelemetry-api>=1.24.0
+opentelemetry-sdk>=1.24.0
+opentelemetry-exporter-otlp>=1.24.0
+opentelemetry-instrumentation-fastapi>=0.45b0
+opentelemetry-instrumentation-httpx>=0.45b0
+
+# LLM-native observability (optional)
+langfuse>=2.0.0
+# langsmith>=0.1.0
+# arize-phoenix>=3.0.0
+
+# Drift / stats
+numpy>=1.26.0
+scipy>=1.12.0

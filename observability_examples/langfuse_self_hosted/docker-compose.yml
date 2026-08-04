@@ -1,0 +1,9 @@
+services:
+  langfuse:
+    image: langfuse/langfuse:latest
+    ports: ["3000:3000"]
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/langfuse
+  db:
+    image: postgres:16
+    environment: [POSTGRES_PASSWORD=postgres, POSTGRES_DB=langfuse]
